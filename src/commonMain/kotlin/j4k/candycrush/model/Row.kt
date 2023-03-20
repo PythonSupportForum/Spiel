@@ -13,7 +13,9 @@ class Row(rowSize: Int) : Iterable<Tile> {
 
     operator fun get(row: Int): Tile {
         // TODO: Step 2.2 Handle OutOfSpace for tiles
-        return tiles[row]
+
+        if(this.isInRow(row)) return tiles[row];
+        return Tile.OutOfSpace;
     }
 
     fun isInRow(column: Int): Boolean {
@@ -31,7 +33,7 @@ class Row(rowSize: Int) : Iterable<Tile> {
     }
 
     operator fun set(column: Int, tile: Tile) {
-        tiles[column] = tile
+        if(column > -1 && column < tiles.size) tiles[column] = tile;
     }
 
     operator fun set(column: Int, tileShortName: String) {

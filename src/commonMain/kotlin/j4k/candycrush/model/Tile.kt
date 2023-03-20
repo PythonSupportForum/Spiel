@@ -26,12 +26,13 @@ enum class Tile {
     val index = ordinal
 
     /**
-     * @return `true` if [Tile] is ([Tile.A] - [Tile.A]).
+     * @return `true` if [Tile] is ([Tile.A] - [Tile.D]).
      * Otherwise `false` ([Tile.Hole], [Tile.OutOfSpace], [Tile.Wall]).
      */
     fun isTile(): Boolean {
+
         // TODO: Step 1.1 Check if tile is A-E
-        return false
+        return this == A || this == B || this == C || this == D || this == E;
     }
 
     /**
@@ -39,7 +40,7 @@ enum class Tile {
      */
     fun shortName(): String {
         // TODO: Step 1.2 Return first letter uppercase of this tile
-        return ""
+        return this.name.substring(0, 1).uppercase();
     }
 
     fun isWall() = this == Wall
@@ -60,8 +61,7 @@ enum class Tile {
          * @return the tile with the given short name
          */
         fun getTile(shortName: String): Tile {
-            // TODO: Step 1.3 Return the tile with the given short name
-            return A
+            return this.toTile.get(shortName)?:throw IllegalArgumentException("Es gibt nur Tiles für A - E");
         }
 
         private val toTile = mutableMapOf<String, Tile>()

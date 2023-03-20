@@ -11,7 +11,7 @@ import j4k.candycrush.renderer.*
 suspend fun fruits(): CandySprites {
     return CandySprites(
         name = "fruits",
-        spriteSize = 212, columns = 5, rows = 4, bitmap = loadImage("images/candy_fruits.png")
+        spriteSize = 212, columns = 5, rows = 4, bitmap = loadImage("images/candy_donuts.png")
     ).apply {
         tilesMap = mapOf(Tile.A to 0, Tile.B to 1, Tile.C to 2, Tile.D to 6, Tile.E to 10)
     }

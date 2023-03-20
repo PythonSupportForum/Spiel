@@ -16,12 +16,17 @@ class GameMechanics(val field: GameField) {
      */
     fun swapTiles(a: Position, b: Position) {
         // TODO: Step 3.1 Implement swapping of tiles
+        val at = field.get(a);
+        val bt = field.get(b);
+        field.set(b, at)
+        field.set(a, bt);
     }
 
     /**
      * Remove a field by setting a [Tile.Hole].
      */
     fun removeTile(position: Position) {
+        field.set(position.column, position.row, Tile.Hole);
         // TODO: Step 3.2 Implement remove tile
     }
 
@@ -32,7 +37,20 @@ class GameMechanics(val field: GameField) {
      */
     fun getHorizontalSurroundings(cell: TileCell): List<TileCell> {
         // TODO: Step 4.1 Implement get horizontal surroundings
-        return emptyList()
+        if(cell.tile.isNotTile()) return listOf(cell);
+        var p = cell.position.right();
+        val right_elements = mutableListOf<TileCell>();
+        while( field.getTile(p) == cell.tile){
+            right_elements.add(field.getTileCell(p));
+            p = p.right();
+        }
+        p = cell.position.left();
+        val left_elements = mutableListOf<TileCell>();
+        while( field.getTile(p) == cell.tile){
+            left_elements.add(field.getTileCell(p));
+            p = p.left();
+        }
+        return left_elements.reversed()+cell+right_elements;
     }
 
     /**
@@ -41,8 +59,21 @@ class GameMechanics(val field: GameField) {
      * Only [Tile]s with [Tile.isTile] = `true` count as connected.
      */
     fun getVerticalSurroundings(cell: TileCell): List<TileCell> {
-        // TODO: Step 4.2 Implement get vertical surroundings
-        return emptyList()
+        // TODO: Step 4.1 Implement get horizontal surroundings
+        if(cell.tile.isNotTile()) return listOf(cell);
+        var p = cell.position.top();
+        val top_elements = mutableListOf<TileCell>();
+        while( field.getTile(p) == cell.tile){
+            top_elements.add(field.getTileCell(p));
+            p = p.top();
+        }
+        p = cell.position.bottom();
+        val bottom_elements = mutableListOf<TileCell>();
+        while( field.getTile(p) == cell.tile){
+            bottom_elements.add(field.getTileCell(p));
+            p = p.bottom();
+        }
+        return top_elements.reversed()+cell+bottom_elements;
     }
 
 

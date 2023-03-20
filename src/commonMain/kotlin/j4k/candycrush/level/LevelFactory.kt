@@ -23,13 +23,22 @@ class LevelFactory {
             |[E,D,A,E,C]
             |[E,A,D,C,B]
             """.trimMargin()
-
-        return Level(
-            levelData, reserveData, maxMoves = 42,
-            tileObjectives = listOf(
-                TileObjective(Tile.A, 18),
-                TileObjective(Tile.C, 22)
+        if ((0..1).random() == 1) {
+            return Level(
+                levelData, reserveData, maxMoves = (24..34).random(),
+                tileObjectives = listOf(
+                    TileObjective(Tile.A, (15..30).random()),
+                    TileObjective(Tile.C, (15..30).random())
+                )
             )
-        )
+        }else{
+            return Level(
+                levelData, reserveData, maxMoves = (24..34).random(),
+                tileObjectives = listOf(
+                    TileObjective(Tile.B, (15..30).random()),
+                    TileObjective(Tile.D, (15..30).random())
+                )
+            )
+        }
     }
 }

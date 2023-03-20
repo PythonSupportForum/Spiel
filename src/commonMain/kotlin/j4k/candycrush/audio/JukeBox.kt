@@ -24,8 +24,9 @@ class JukeBox(private val views: Views) {
     }
 
     private suspend fun loadPlaylist() {
-        playList += newMusic("monkey_drama.mp3")
-        playList += newMusic("monkey_island_puzzler.mp3")
+        //playList += newMusic("monkey_drama.mp3")
+        //playList += newMusic("monkey_island_puzzler.mp3")
+        playList += newMusic("gas-gas-gaslqshort.mp3")
     }
 
     suspend fun play() {

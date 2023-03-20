@@ -15,7 +15,8 @@ data class GameField(val columnsSize: Int, val rowSize: Int) : Iterable<Row> {
 
     fun getRow(row: Int): Row {
         // TODO: Step 2.1 Handle Out of space for rows
-        return rows[row]
+        if(row > -1 && row < rows.size) return rows[row]
+        return Row.outOfSpace();
     }
 
     fun clone(): GameField {

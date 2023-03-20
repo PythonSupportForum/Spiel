@@ -31,7 +31,9 @@ class Step2 {
      * **Test**: `get tile by index OutOfSpace`
      *
      * Also, index based [Row] access ([GameField.getRow]) should return [Tile.OutOfSpace]
-     * if the [Row] index is out of range (`0 - rowSize`).
+     * if the [Row] index
+     *
+     * is out of range (`0 - rowSize`).
      */
     @Test
     fun getTileByIndexOutOfSpace() {
